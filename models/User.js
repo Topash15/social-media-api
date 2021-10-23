@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+
 const UserSchema = new Schema(
 {
     username: {
@@ -14,8 +15,18 @@ const UserSchema = new Schema(
         unique: true,
         // TODO must be valid email. use mongoose validation
     },
-    thoughts: [],
-    friends: [],
+    thoughts: [ 
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }
+     ],
+    friends: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
 },
 {
     toJSON: {
