@@ -22,7 +22,7 @@ const addDateSuffix = date => {
 // accepts timestamp and options
 module.exports = (
     timestamp,
-    { monthLength = 'short', dataSuffix = true } = {}
+    { monthLength = 'short', dateSuffix = true } = {}
 ) => {
     let months;
 
