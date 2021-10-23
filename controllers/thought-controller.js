@@ -1,4 +1,3 @@
-thought-routes
 const { Thought, User } = require("../models");
 
 
@@ -79,9 +78,6 @@ const ThoughtController = {
         })
         .catch((err) => res.status(400).json(err))
     }
-
-
-    // delete thought
 
 }
 
