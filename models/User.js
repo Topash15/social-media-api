@@ -8,15 +8,15 @@ const UserSchema = new Schema(
         required: true,
         trim: true,
     },
-    email: {
+    email : {
         type: String,
         required: true,
-        unique: true
-        },
+        unique: true,
+        // TODO must be valid email. use mongoose validation
+    },
     thoughts: [],
     friends: [],
 },
-
 {
     toJSON: {
         getters: true,
@@ -27,9 +27,11 @@ const UserSchema = new Schema(
 )
 
 // creates friend count virtual
+
 UserSchema.virtual("friendCount").get(function(){
     return this.friends.length
 })
+
 
 // creates User model using User schema
 const User = model('User', UserSchema);

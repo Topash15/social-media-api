@@ -1,9 +1,12 @@
+thought-routes
 const { Thought, User } = require("../models");
+
 
 const ThoughtController = {
     // get all Thoughts
     getAllThoughts(req, res) {
         Thought.find({})
+            .select('-__v')
             .then((dbThoughtData) => res.json(dbThoughtData))
             .catch((err) => {
                 console.log(err)
@@ -11,6 +14,7 @@ const ThoughtController = {
             })
     },
     // get thought by id
+
     getThoughtById({params}, res) {
         Thought.findOne({ _id: params.id })
             .then((dbThoughtData) => res.json(dbThoughtData))
@@ -23,6 +27,7 @@ const ThoughtController = {
     // create thought
     createThought({body}, res) {
         Thought.create(body)
+
             .then(({ _id, username}) => {
                 return User.findOneAndUpdate(
                     { username: username},
@@ -37,6 +42,8 @@ const ThoughtController = {
               }
               res.json(dbUserData)
           })
+          .then((dbThoughtData) => res.json(dbThoughtData))
+
           .catch((err) => res.status(400).json(err));
       },
 
@@ -72,6 +79,10 @@ const ThoughtController = {
         })
         .catch((err) => res.status(400).json(err))
     }
+
+
+    // delete thought
+
 }
 
 module.exports = ThoughtController;
