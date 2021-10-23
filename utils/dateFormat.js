@@ -60,21 +60,27 @@ module.exports = (
 
     const dateObj = new Date(timestamp);
     const formattedMonth = months[dateObj.getMonth()];
-
     let dayOfMonth;
 
     if (dateSuffix) {
+        console.log("Datesuffix")
         dayOfMonth = addDateSuffix(dateObj.getDate());
-    } else {
-        hour = dateObj.getHours();
-    }
+    } 
 
+    let hour = dateObj.getHours();
+    
     // if hour is 0, change it to 12
     if (hour === 0) {
         hour = 12
     }
 
     const minutes = dateObj.getMinutes();
+  
+    if (minutes < 10) {
+        zero = "0"
+    } else {
+        zero = ""
+    }
 
     // sets am or pm
     let periodOfDay;
@@ -85,7 +91,9 @@ module.exports = (
         periodOfDay = 'am'
     }
 
-    const formattedTimeStamp = `${formattedMonth} ${dayOfMonth}, ${year} at ${hour}:${minutes} ${periodOfDay}`;
+    const year = dateObj.getFullYear();
+    
+    const formattedTimeStamp = `${formattedMonth} ${dayOfMonth}, ${year} at ${hour}:${zero}${minutes} ${periodOfDay}`;
 
     return formattedTimeStamp
 }
