@@ -13,7 +13,6 @@ router
     .get(getAllUsers)
     .post(createUser)
 
-
 // Get single user, update user, or delete user
 router
     .route('/:id')

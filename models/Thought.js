@@ -32,6 +32,7 @@ const ReactionSchema = new Schema(
   }
 );
 
+
 const ThoughtSchema = new Schema(
   {
     thoughtText: {
@@ -65,4 +66,6 @@ const ThoughtSchema = new Schema(
 const Thought = model("Thought", ThoughtSchema);
 
 // exports model
+
 module.exports = Thought;
+
