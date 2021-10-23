@@ -16,7 +16,7 @@ router
 
 // Get single user, update user, or delete user
 router
-    .route('/:id')
+    .route('/:username')
     .get(getUserById)
     .put(updateUser)
     .delete(deleteUser)

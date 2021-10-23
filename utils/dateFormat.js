@@ -63,7 +63,6 @@ module.exports = (
     let dayOfMonth;
 
     if (dateSuffix) {
-        console.log("Datesuffix")
         dayOfMonth = addDateSuffix(dateObj.getDate());
     } 
 
